@@ -6,12 +6,14 @@
 /*   By: almlopez <almlopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:51:02 by almlopez          #+#    #+#             */
-/*   Updated: 2025/02/05 15:38:37 by almlopez         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:57:13 by almlopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
+# define H_LOW "0123456789abcdef"
+# define H_UP "0123456789ABCDEF"
 
 int	what_letter(char *str, int i, va_list args)
 {
@@ -23,25 +25,25 @@ int	what_letter(char *str, int i, va_list args)
 			return (ft_putstr_fd(va_arg(args, char *), 1));
 		else if (str[i + 1] == 'i')
 			return (ft_putnbr_fd(va_arg(args, int), 1));
-		/*else if (str[i + 1] == 'p')
-			printf_hexa();
-		else if (str[i + 1] == 'd')
-			printf_base_ten();
-		else if (str[i + 1] == 'u')
-			printf_base_ten_unsigned();
-		else if (str[i + 1] == 'x')
-			printf_base_sixteen_min();
-		else if (str[i + 1] == 'X')
-			printf_base_sixteen_may();
 		else if (str[i + 1] == '%')
-			printf_porcentaje();*/
+			return (ft_putchar_fd('%', 1));
+		else if (str[i + 1] == 'x')
+			return (ft_putnbr_base(va_arg(args, int), H_LOW));
+		else if (str[i + 1] == 'X')
+			return (ft_putnbr_base(va_arg(args, int), H_UP));
+		else if (str[i + 1] == 'd')
+			return (ft_putnbr_fd(va_arg(args, int), 1));
+		else if (str[i + 1] == 'u')
+			return (ft_putnbr_unsigned(va_arg(args, unsigned int), 1));
+		/*else if (str[i + 1] == 'p')
+			El puntero void * dado como argumento se imprime en formato hexadecimal*/
 	}
 	return (0);
 }
 
 int	ft_printf(char const *str, ...)
 {
-	int		i;
+	int	i;
 	va_list	args;
 
 	i = 0;
@@ -54,6 +56,7 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (0);
 }
+
 /*#include <stdio.h>
 int main ()
 {
