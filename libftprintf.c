@@ -6,14 +6,15 @@
 /*   By: almlopez <almlopez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:51:02 by almlopez          #+#    #+#             */
-/*   Updated: 2025/02/05 16:57:13 by almlopez         ###   ########.fr       */
+/*   Updated: 2025/02/09 13:49:29 by almlopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libftprintf.h"
+#include "libft/libft.h"
+#include "ft_printf.h"
 # define H_LOW "0123456789abcdef"
 # define H_UP "0123456789ABCDEF"
+# define UNSIG_INT "0123456789"
 
 int	what_letter(char *str, int i, va_list args)
 {
@@ -34,7 +35,8 @@ int	what_letter(char *str, int i, va_list args)
 		else if (str[i + 1] == 'd')
 			return (ft_putnbr_fd(va_arg(args, int), 1));
 		else if (str[i + 1] == 'u')
-			return (ft_putnbr_unsigned(va_arg(args, unsigned int), 1));
+			return (ft_putnbr_unsigned(va_arg(args, unsigned int),
+				UNSIG_INT));
 		/*else if (str[i + 1] == 'p')
 			El puntero void * dado como argumento se imprime en formato hexadecimal*/
 	}
@@ -57,6 +59,7 @@ int	ft_printf(char const *str, ...)
 	return (0);
 }
 
+//tiene que devolver NIL no NULL
 /*#include <stdio.h>
 int main ()
 {
