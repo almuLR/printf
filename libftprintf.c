@@ -6,7 +6,7 @@
 /*   By: almudenalopezrodriguez <almudenalopezro    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:51:02 by almlopez          #+#    #+#             */
-/*   Updated: 2025/02/14 18:24:58 by almudenalop      ###   ########.fr       */
+/*   Updated: 2025/02/14 18:35:05 by almudenalop      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 # define H_LOW "0123456789abcdef"
 # define H_UP "0123456789ABCDEF"
 # define UNSIG_INT "0123456789"
+
+int ft_putptr(void *ptr, int fd)
+{
+	unsigned long	address;
+	int				i;
+
+	address = (unsigned long)ptr;
+	if (!ptr)
+		return (write(fd, "(nil)", 5));
+	i = write(fd, "0x", 2);
+	i += ft_putnbr_base(address, H_LOW);
+	return (i);
+}
 
 int	what_letter(char *str, int i, va_list args)
 {
