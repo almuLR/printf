@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almlopez <almlopez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almudenalopezrodriguez <almudenalopezro    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:51:02 by almlopez          #+#    #+#             */
-/*   Updated: 2025/02/09 13:49:29 by almlopez         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:24:58 by almudenalop      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	what_letter(char *str, int i, va_list args)
 		else if (str[i + 1] == 'd')
 			return (ft_putnbr_fd(va_arg(args, int), 1));
 		else if (str[i + 1] == 'u')
-			return (ft_putnbr_unsigned(va_arg(args, unsigned int),
-				UNSIG_INT));
+			return (ft_putnbr_unsigned(va_arg(args, unsigned int), 1));
 		/*else if (str[i + 1] == 'p')
 			El puntero void * dado como argumento se imprime en formato hexadecimal*/
 	}
